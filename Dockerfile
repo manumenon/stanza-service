@@ -11,14 +11,13 @@ RUN apt-get update -y && \
                 git && rm -rf /var/lib/apt/lists/*
 
 RUN export VERSION="4.4.0"; \
-        wget https://downloads.cs.stanford.edu/nlp/software/stanford-corenlp-latest.zip; \
-        unzip stanford-corenlp-latest.zip; \
+        wget https://downloads.cs.stanford.edu/nlp/software/stanford-corenlp-${VERSION}.zip; \
+        unzip stanford-corenlp-${VERSION}.zip; \
         ls -l ; \
         mv stanford-corenlp-${VERSION} CoreNLP; \
-        rm -rf stanford-corenlp-latest.zip; \
+        rm -rf stanford-corenlp-${VERSION}.zip; \
         cd CoreNLP; \
         export CLASSPATH=""; for file in `find . -name "*.jar"`; do export CLASSPATH="$CLASSPATH:`realpath $file`"; done
-
 
 
 
